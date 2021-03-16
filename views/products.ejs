@@ -93,7 +93,7 @@
     <h2 class="Tranding_books">All Books</h2>
 
     <!-- Tanding books Card row1 -->
-    <!-- <div class="card-deck"> -->
+ 
     <div class="container">
       <!-- Dynamic Card displaying Logic -->
       <% if (product_list.length > 0) { for(let product of product_list) { %>
@@ -109,25 +109,12 @@
             <span style="color: #1b89dd"><%= product.bookCost %></span><br />
             Awsome book, really inspiring and Motivating
           </p>
+          <a href="#" class="btn btn-primary">Details</a>
           <a href="#" class="btn btn-primary">Add to Cart</a>
         </div>
       </div>
 
-      <!-- <div class="card" style="width: 400px">
-            <img
-              class="card-img-top"
-              src="https://source.unsplash.com/400x300/?dogs"
-              alt="Immage error"
-            />
-            <div class="card-body">
-              <h4 class="card-title"><%= product.bookName %></h4>
-              <p class="card-text">
-                <span style="color: #1b89dd"><%= product.bookCost %></span><br />
-                Awsome book, really inspiring and Motivating
-              </p>
-              <a class="btn btn-primary" href="#">Add to Cart</a>
-            </div>
-          </div> -->
+
       <% } } else { %>
       <h1>Sorry No Book Available yet!</h1>
 
