@@ -25,7 +25,28 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="home_page.css" />
+    <style>
+      .container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .cardContainer {
+        margin-bottom: 10px;
+        border: 2px solid red;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .cardContainer:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12),
+          0 4px 8px rgba(0, 0, 0, 0.06);
+      }
+      .image {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-dark navbar-expand-md bg-primary">
@@ -72,13 +93,27 @@
     <h2 class="Tranding_books">All Books</h2>
 
     <!-- Tanding books Card row1 -->
-    <div class="card-deck">
+    <!-- <div class="card-deck"> -->
+    <div class="container">
       <!-- Dynamic Card displaying Logic -->
-      <% 
-      if (product_list.length > 0) { 
-        for(let product of product_list) { 
-          %>
-          <div class="card" style="width: 400px">
+      <% if (product_list.length > 0) { for(let product of product_list) { %>
+      <div class="card cardContainer" style="width: 400px">
+        <img
+          class="card-img-top image"
+          src="<%= product.bookImage %>"
+          alt="Card image"
+        />
+        <div class="card-body">
+          <h4 class="card-title"><%= product.bookName %></h4>
+          <p class="card-text">
+            <span style="color: #1b89dd"><%= product.bookCost %></span><br />
+            Awsome book, really inspiring and Motivating
+          </p>
+          <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+      </div>
+
+      <!-- <div class="card" style="width: 400px">
             <img
               class="card-img-top"
               src="https://source.unsplash.com/400x300/?dogs"
@@ -92,19 +127,11 @@
               </p>
               <a class="btn btn-primary" href="#">Add to Cart</a>
             </div>
-          </div>
-      <% 
-        }
-      } else { 
-      %>
+          </div> -->
+      <% } } else { %>
       <h1>Sorry No Book Available yet!</h1>
 
-      <%
-      }
-      %>
-
-      
-      
+      <% } %>
     </div>
     <footer>
       <div class="jumbotron jumbotron-fluid">
