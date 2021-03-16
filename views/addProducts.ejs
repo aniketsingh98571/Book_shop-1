@@ -72,8 +72,15 @@
     </div>
 
     <!-- Form -->
-    <div id="book_info" style=" margin-left: 30%; margin-right: 30%;">
+
+    <!-- Extra entries to add 
+      #Auther entry 
+
+    -->
+    <hr>
+    <div id="book_info" style="margin-left: 30%; margin-right: 30%">
       <form action="/addProducts" method="POST" class="was-validated">
+        
         <!-- input for the name of the book -->
         <div class="form-group">
           <label for="bookName"> Book Name: </label>
@@ -88,7 +95,8 @@
           <div class="valid-feedback">Value Accepted</div>
           <div class="invalid-feedback">Please fill this entry</div>
         </div>
-
+        <hr>
+        
         <!-- input for image of the book -->
         <div class="form-group">
           <label for="bookImage"> Book Image: </label>
@@ -96,25 +104,59 @@
             type="text"
             class="form-control"
             id="bookImage"
-            placeholder="Enter the Image of Book"
+            placeholder="Enter the Image URL of Book"
             name="bookImage"
             required
           />
           <div class="valid-feedback">Value Accepted</div>
           <div class="invalid-feedback">Please fill this entry</div>
         </div>
+        <hr>
+
+        <!-- book Description -->
+        <div class="form-group">
+          <label for="bookDescription"> Book Description: </label>
+          <input
+            type="text"
+            class="form-control"
+            id="bookDescription"
+            placeholder="Enter the Description of Book"
+            name="bookDescription"
+            required
+          />
+          <div class="valid-feedback">Value Accepted</div>
+          <div class="invalid-feedback">Please fill this entry</div>
+        </div>
+        <hr>
+
+        <!-- book Authors -->
+        <div class="form-group">
+          <label for="bookAuthors"> Book Authors: </label>
+          <input
+            type="text"
+            class="form-control"
+            id="bookAuthors"
+            placeholder="Enter the Authors of Book"
+            name="bookAuthors"
+            required
+          />
+          <div class="valid-feedback">Value Accepted</div>
+          <div class="invalid-feedback">
+            Please Separate the author names with / (fordward slash)
+          </div>
+        </div>
+        <hr>
 
         <!-- Book Genere -->
         <div class="form-group">
           <br />
           <p>Please select the Genre of the Book From the Following Options.</p>
-          <label >
+          <label>
             <input
               type="checkbox"
               name="genreHorror"
               id="genreHorror"
               value="1"
-              
             />
             Horror</label
           >
@@ -183,9 +225,9 @@
               value="1"
             />
             Encyclopedia</label
-          > 
+          >
 
-          <br>
+          <br />
           <label
             ><input
               type="checkbox"
@@ -194,8 +236,30 @@
               value="1"
             />
             Motivation</label
-          > 
+          >
         </div>
+        <hr>
+
+        <!-- Number of Pages in book -->
+        <div class="form-inline input-group">
+          <label for="bookTotalPages">
+            Total number of Pages in the book:
+          </label>
+          <input
+            type="text"
+            class="form-control ml-2"
+            id="bookTotalPages"
+            placeholder="Enter the TotalPages of Book"
+            name="bookTotalPages"
+            required
+          />
+          <div class="input-group-append">
+            <span class="input-group-text input-group-sm"> Pages</span>
+          </div>
+          <div class="valid-feedback">Value Accepted</div>
+          <div class="invalid-feedback">Please fill this entry</div>
+        </div>
+        <hr>
 
         <!-- Cost -->
         <div class="form-inline input-group">
@@ -214,9 +278,51 @@
           <div class="valid-feedback">Value Accepted</div>
           <div class="invalid-feedback">Please fill this entry</div>
         </div>
+        <hr>
 
-        <button type="submit" class="btn btn-success mt-3 mb-5" >Submit details?</button>
+        <!-- Note for the author review! -->
+        <div class="alert alert-success alert-dismissible fade show">
+          <strong>The Following entry is to help your customers</strong>
+          <p>
+           NOTE:- IF YOU DONT WANT TO PUT THE REVIEW PLEASE PUT (NA) IN THE ENTRY. <br>
+           You can share your own tips or ways to read the book inorder to provide better utilization of book!
+          </p>
+          <button type="button" class="close" data-dismiss="alert">
+            &times;
+          </button>
+        </div>
+
+        <!-- Author review -->
+        <div class="form-group">
+          <label for="bookReviews"> Book Author Review: </label>
+          <input
+            type="text"
+            class="form-control"
+            id="bookReviews"
+            placeholder="Enter the Review of Book"
+            name="bookReviews"
+            required
+          />
+          <div class="valid-feedback">Value Accepted</div>
+          <div class="invalid-feedback">Please fill this entry!</div>
+        </div>
+        <hr>
+
+        <button type="submit" class="btn btn-success mt-3 mb-5">
+          Submit details?
+        </button>
       </form>
     </div>
+    <footer>
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Contact US?</h1>
+          <p class="lead">
+            Email Address: pushkarpremchandkhadase@gmail.com<br /><br />
+            Phone Number: 7620698363
+          </p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

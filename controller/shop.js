@@ -6,27 +6,39 @@ exports.homePage = (req, res, next) => {
 };
 
 exports.productPage = (req, res, next) => {
-  
-  Product.fetchAll().then(products => {
-    console.log("Displaying all the products");
-    console.log(products);
-    res.render("products.ejs",{product_list:products});
-  }).catch(err => {
-    console.log(err);
-  });
+  Product.fetchAll()
+    .then((products) => {
+      console.log("Displaying all the products");
+      console.log(products);
+      res.render("products.ejs", { product_list: products });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 exports.addProducts = (req, res, next) => {
   res.render("addProducts.ejs");
 };
 
+//module for add product logic for post request
+
 exports.postAddProducts = (req, res, next) => {
+  console.log("displaying the client req");
   console.log(req.body);
+  let DescriptionBuffer = [];
+
   //Adding the dynamic date
   const date = moment(new Date()).format("YYYY/MM/DD");
   const price = req.body.bookCost;
   const imagesrc = req.body.bookImage;
   const name = req.body.bookName;
+  const bookAuthors = req.body.bookAuthors;
+  const bookDescription = req.body.bookDescription;
+  const bookTotalPages = req.body.bookTotalPages;
+  const bookReviews = {
+    authorReview: req.body.bookReviews
+  }
   //creating the blue print to store as object
   const genre = {
     genreHorror: 0,
@@ -48,14 +60,24 @@ exports.postAddProducts = (req, res, next) => {
       genre[hold_left] = 0;
     }
   }
-  product = new Product(name, imagesrc, genre, price, date);
+  product = new Product(
+    name,
+    imagesrc,
+    bookDescription,
+    bookAuthors,
+    genre,
+    bookTotalPages,
+    price,
+    date,
+    bookReviews
+  );
   product
     .save()
     .then((result) => {
       console.log("Product have been created successfully");
       res.redirect("../");
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };

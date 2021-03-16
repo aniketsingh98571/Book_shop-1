@@ -1,11 +1,25 @@
 const getDb = require("../util/database").getDb;
 class Product {
-  constructor(bookName, bookImage, bookGenre, bookCost, bookDate) {
+  constructor(
+    bookName,
+    bookImage,
+    bookDescription,
+    bookAuthors,
+    bookGenre,
+    bookTotalPages,
+    bookCost,
+    bookDate,
+    bookReviews
+  ) {
     this.bookName = bookName;
     this.bookImage = bookImage;
     this.bookGenre = bookGenre;
     this.bookCost = bookCost;
     this.bookDate = bookDate;
+    this.bookDescription = bookDescription;
+    this.bookAuthors = bookAuthors;
+    this.bookTotalPages = bookTotalPages;
+    this.bookReviews = bookReviews; 
   }
   save() {
     const db = getDb();
@@ -28,13 +42,12 @@ class Product {
       .find()
       .toArray()
       .then((products) => {
-          console.log(products);
-          return products;
+        console.log(products);
+        return products;
       })
-      .catch(err => {
-          console.log(err);
+      .catch((err) => {
+        console.log(err);
       });
   }
-
 }
 module.exports = Product;
